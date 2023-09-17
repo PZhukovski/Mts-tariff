@@ -1,3 +1,4 @@
+// server.js
 import express from "express";
 import puppeteer from "puppeteer-core";
 import { writeFileSync } from "fs";
@@ -43,6 +44,5 @@ app.get("/api/data", async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  console.log(`Сервер запущен на порту ${port}`);
-});
+export default app;
+

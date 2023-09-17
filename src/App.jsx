@@ -3,7 +3,7 @@ import React, { useState, createContext } from "react";
 import dataJson from "../data.json";
 import { TariffList } from "./components/TariffList/TariffList";
 import { TariffCategory } from "./components/TariffCategory/TariffCategory";
-
+import { Select } from "./components/Select/Select";
 export const DataContext = createContext();
 
 function App() {
@@ -11,6 +11,7 @@ function App() {
   const [category, setCategory] = useState({
     category: 5194439,
   });
+  const [selectedSelector, setSelectedSelector] = useState("popular");
 
   const callBackendAPI = async () => {
     const response = await fetch("/api/data");
@@ -24,12 +25,24 @@ function App() {
       category: id,
     });
   };
+  const onChangeSelector = (value) => {
+    setSelectedSelector(value);
+  };
+
   return (
     <>
       <div>
-        <DataContext.Provider value={[data, category, onChangeCategory]}>
-          <h2>Выбери себе подходящий тариф!</h2>
+        <DataContext.Provider
+          value={[
+            data,
+            category,
+            onChangeCategory,
+            onChangeSelector,
+            selectedSelector,
+          ]}>
+          <h1>Выбери себе подходящий тариф!</h1>
           <TariffCategory />
+          <Select />
           <TariffList />
         </DataContext.Provider>
         <button className="button" onClick={callBackendAPI}>

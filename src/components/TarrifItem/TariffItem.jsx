@@ -27,7 +27,6 @@ export const TariffItem = ({ catalog }) => {
         catalog?.configurableTariffSettings?.packages.filter((cost) => {
           return cost.regulatorsOptionsIds[0] === currentOptionId;
         });
-      console.log(filteredCosts);
       return filteredCosts;
     });
   }, [currentOption]);
@@ -54,12 +53,17 @@ export const TariffItem = ({ catalog }) => {
       <div className={styles.benefitsDescription}>
         {parse(catalog.benefitsDescription?.description || "")}
       </div>
-      <div className={styles.subscriptionFee}>
-        {parse(catalog.subscriptionFee?.value || "")}
-      </div>
+      {catalog.subscriptionFee && (
+        <div className={styles.subscriptionFee}>
+          {parse(
+            `${catalog.subscriptionFee?.numValue} ${catalog.subscriptionFee?.displayUnit}` ||
+              ""
+          )}
+        </div>
+      )}
       {catalog.configurableTariffSettings && (
         <div className={styles.subscriptionFee}>
-          {costId[0]?.subscriptionFee?.value}
+          {`${costId[0]?.subscriptionFee?.numValue} ${costId[0]?.subscriptionFee?.displayUnit}`}
         </div>
       )}
     </div>
