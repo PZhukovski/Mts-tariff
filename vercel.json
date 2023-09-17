@@ -1,7 +1,5 @@
 {
   "functions": {
-    "api/data": {
-      "handler": "server.js"
-    }
+    "api/data":  "app/server.js"
   }
 }
