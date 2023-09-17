@@ -1,5 +1,3 @@
 {
-  "functions": {
-    "api/data":  "app/server.js"
-  }
+  "routes": [{ "src": "/api/data", "dest": "app/server.js" }]
 }
