@@ -1,9 +1,10 @@
-// server.js
 import express from "express";
 import puppeteer from "puppeteer-core";
 import { writeFileSync } from "fs";
+import chromium from "@sparticuz/chromium";
 
 const app = express();
+
 const port = process.env.PORT || 3001;
 
 app.use((req, res, next) => {
@@ -11,25 +12,35 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get("/api/data", async (req, res) => {
+app.get("/api", async (req, res) => {
+  console.log("поехали");
+
+  let options = {
+    args: chromium.args,
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath(),
+    headless: chromium.headless,
+  };
+
   try {
-    const browser = await puppeteer.launch({
-      executablePath:
-        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-      headless: "new",
-    });
+    console.log("поехали1");
+    let browser = await puppeteer.launch(options);
+    console.log("поехали2");
     const page = await browser.newPage();
-
-    const url =
-      "https://moskva.mts.ru/personal/mobilnaya-svyaz/tarifi/vse-tarifi/mobile-tv-inet";
+    console.log("поехали3");
+    const url = process.env.API_URL
+    console.log("поехали4");
     await page.goto(url);
-
+    console.log("поехали5");
+    console.log(page.url());
     const data = await page.evaluate(() => {
       return {
         actualTariffs: window.globalSettings.tariffs.actualTariffs,
         catalogMenuItems: window.globalSettings.tariffs.catalogMenuItems,
       };
     });
+    console.log(data);
+
     const jsonData = JSON.stringify(data, null, 2);
     try {
       writeFileSync("data.json", jsonData, "utf8");
@@ -40,9 +51,9 @@ app.get("/api/data", async (req, res) => {
 
     await browser.close();
   } catch (error) {
+    console.error("Ошибка при выполнении скрипта:", error);
     res.status(500).json({ error: "Ошибка при чтении данных" });
   }
 });
 
 export default app;
-

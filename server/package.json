@@ -1,0 +1,14 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Express Server",
+  "dependencies": {
+    "puppeteer-core": "^18.2.1",
+    "express": "^4.18.2",
+    "@sparticuz/chromium": "^116.0.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  }
+}

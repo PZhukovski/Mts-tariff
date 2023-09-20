@@ -14,7 +14,7 @@ function App() {
   const [selectedSelector, setSelectedSelector] = useState("popular");
 
   const callBackendAPI = async () => {
-    const response = await fetch("/api/data");
+    const response = await fetch("/api");
     setData(dataJson);
     if (response.status !== 200) {
       throw Error(response.message);
