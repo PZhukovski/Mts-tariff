@@ -37,8 +37,8 @@ jobs:
           git config --global user.email "mayabessonova_16_94@mail.ru"
           git checkout gh-pages
           git rm -rf .
-          cp ../index.html .
-          git add index.html
+          cp -r ../src/* .
+          git add .
           git commit -m "Deploy to GitHub Pages" # Коммит изменений
           git push origin gh-pages
         env:
