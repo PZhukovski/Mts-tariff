@@ -29,7 +29,7 @@ jobs:
           npm start
         env:
           NODE_ENV: production
-          
+
       # Загрузка клиентской части на GitHub Pages
       - name: Deploy to GitHub Pages
         run: |
@@ -37,7 +37,7 @@ jobs:
           git config --global user.email "mayabessonova_16_94@mail.ru"
           git checkout gh-pages
           git rm -rf .
-          cp -r ../src/dist/* .
+          rsync -av ../src/dist/* . 
           git add .
           git commit -m "Deploy to GitHub Pages" # Коммит изменений
           git push origin gh-pages
