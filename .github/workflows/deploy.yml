@@ -23,8 +23,8 @@ jobs:
 
       # Запуск серверной части
       - name: Start Server
-        working-directory: cd server
         run: |
+          cd server
           npm install
           npm start
         env:
