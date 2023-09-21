@@ -1,8 +1,0 @@
-{
-  "build": {
-    "env": {
-      "LD_LIBRARY_PATH": "/opt/local/lib/nss/libnss3.so:"
-    }
-  },
-  "routes": [{ "src": "/api", "dest": "/api/server.js" }]
-}
