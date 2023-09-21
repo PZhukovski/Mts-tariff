@@ -16,7 +16,6 @@ jobs:
       # Сборка и развертывание клиентской части
       - name: Build and Deploy Client
         run: |
-          cd src # Перейдите в директорию вашей клиентской части (если она не в корне)
           npm install
           npm run build
         env:
@@ -29,5 +28,5 @@ jobs:
           npm install
           npm start
         env:
-          NODE_ENV: production 
+          NODE_ENV: production
 
