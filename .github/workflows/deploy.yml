@@ -13,22 +13,16 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-    # Настройка параметров автора Git
-      - name: Configure Git Author
+      # Настройка URL-а репозитория Git
+      - name: Configure Git Repository URL
         run: |
-          git config --global user.name "Polina Zhukovskaya"
-          git config --global user.email "mayabessonova_16_94@mail.ru"
+          git remote set-url origin https://git:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
 
-      # Сборка и развертывание клиентской части
-      - name: Build and Deploy Client
+      # Деплой с использованием gh-pages
+      - name: Deploy with gh-pages
         run: |
-          npm install
-          npm run build
-          npm install -g gh-pages
-          git config --global credential.helper cache
-          git config --global user.name "Polina Zhukovskaya"
-          git config --global user.email "mayabessonova_16_94@mail.ru"
-          gh-pages -d dist -m "Deploy to GitHub Pages"
+          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+
         env:
           REACT_APP_API_URL: ${{ secrets.API_URL }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
