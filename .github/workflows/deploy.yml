@@ -18,8 +18,8 @@ jobs:
         run: |
           npm install
           npm run build
-          npm install -g gh-pages 
-          gh-pages -d build -b gh-pages -m "Deploy to GitHub Pages"
+          npm install -g gh-pages
+          gh-pages -d build -m "Deploy to GitHub Pages"
         env:
           REACT_APP_API_URL: ${{ secrets.API_URL }}
 
