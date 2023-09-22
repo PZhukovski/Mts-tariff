@@ -21,7 +21,7 @@ jobs:
       # Деплой с использованием gh-pages
       - name: Deploy with gh-pages
         run: |
-          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
+          npx gh-pages -d dist -u "github-actions-bot <support+actions@github.com>"
 
         env:
           REACT_APP_API_URL: ${{ secrets.API_URL }}
