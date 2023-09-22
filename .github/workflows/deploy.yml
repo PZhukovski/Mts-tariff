@@ -25,13 +25,13 @@ jobs:
           npm install
           npm run build
           npm install -g gh-pages
-          git config --global credential.helper cache 
+          git config --global credential.helper cache
           git config --global user.name "Polina Zhukovskaya"
           git config --global user.email "mayabessonova_16_94@mail.ru"
           gh-pages -d dist -m "Deploy to GitHub Pages"
         env:
           REACT_APP_API_URL: ${{ secrets.API_URL }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Запуск серверной части
       - name: Start Server
