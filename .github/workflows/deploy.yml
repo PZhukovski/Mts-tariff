@@ -13,6 +13,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+      # Установка зависимостей проекта
+      - name: Install Dependencies
+        run: npm install
+
+      # Сборка проекта
+      - name: Build Project
+        run: npm run build
+        
       # Настройка URL-а репозитория Git
       - name: Configure Git Repository URL
         run: |
@@ -21,7 +29,6 @@ jobs:
       # Деплой с использованием gh-pages
       - name: Deploy with gh-pages
         run: |
-          npm run build
           ls $GITHUB_WORKSPACE
           npx gh-pages -d $GITHUB_WORKSPACE/dist -u "github-actions-bot <support+actions@github.com>"
 
