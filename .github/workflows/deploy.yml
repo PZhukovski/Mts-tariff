@@ -18,6 +18,8 @@ jobs:
         run: |
           npm install
           npm run build
+          npm install -g gh-pages 
+          gh-pages -d build -b gh-pages -m "Deploy to GitHub Pages"
         env:
           REACT_APP_API_URL: ${{ secrets.API_URL }}
 
@@ -29,13 +31,5 @@ jobs:
           npm start
         env:
           NODE_ENV: production
-
-      # Загрузка клиентской части на GitHub Pages
-      - name: Deploy with gh-pages
-        run: |
-          git remote set-url origin https://github.com/PZhukovski/Mts-tariff.git
-          npx gh-pages -d build -u "Polina Zhukovskaya" "mayabessonova_16_94@mail.ru"
-      env:
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 
