@@ -13,6 +13,12 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
+    # Настройка параметров автора Git
+      - name: Configure Git Author
+        run: |
+          git config --global user.name "Polina Zhukovskaya"
+          git config --global user.email "mayabessonova_16_94@mail.ru"
+
       # Сборка и развертывание клиентской части
       - name: Build and Deploy Client
         run: |
