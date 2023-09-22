@@ -21,7 +21,8 @@ jobs:
       # Деплой с использованием gh-pages
       - name: Deploy with gh-pages
         run: |
-          ls $GITHUB_WORKSPACE/dist
+          npm run build
+          ls $GITHUB_WORKSPACE
           npx gh-pages -d $GITHUB_WORKSPACE/dist -u "github-actions-bot <support+actions@github.com>"
 
         env:
