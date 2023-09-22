@@ -20,7 +20,7 @@ jobs:
       # Сборка проекта
       - name: Build Project
         run: npm run build
-        
+
       # Настройка URL-а репозитория Git
       - name: Configure Git Repository URL
         run: |
@@ -44,5 +44,3 @@ jobs:
           npm start
         env:
           NODE_ENV: production
-
-
