@@ -28,7 +28,7 @@ app.get("/api", async (req, res) => {
     console.log("поехали2");
     const page = await browser.newPage();
     console.log("поехали3");
-    const url = process.env.API_URL
+    const url = process.env.API_URL || "https://pzhukovski.github.io/Mts-tariff";
     console.log("поехали4");
     await page.goto(url);
     console.log("поехали5");
