@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [react()],
   build: {
     outDir: 'dist',
-    output: {
-    // base: '/Mts-tariff',
-    },
+    // output: {
+    // // base: '/Mts-tariff',
+    // },
   },
 });
