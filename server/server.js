@@ -28,7 +28,7 @@ app.get("/Mts-tariff/api", async (req, res) => {
     console.log("поехали2");
     const page = await browser.newPage();
     console.log("поехали3");
-    const url = process.env.API_URL
+    const url = "https://moskva.mts.ru/personal/mobilnaya-svyaz/tarifi/vse-tarifi/mobile-tv-inet"
     console.log("поехали4");
     await page.goto(url);
     console.log("поехали5");
