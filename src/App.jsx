@@ -14,7 +14,7 @@ function App() {
   const [selectedSelector, setSelectedSelector] = useState("popular");
 
   const callBackendAPI = async () => {
-    const response = await fetch("/api");
+    const response = await fetch("/Mts-tariff/api");
     setData(dataJson);
     if (response.status !== 200) {
       throw Error(response.message);

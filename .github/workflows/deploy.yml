@@ -46,5 +46,3 @@ jobs:
           npm start
         env:
           NODE_ENV: production
-        env:
-          API_URL: ${{ secrets.API_URL }}
