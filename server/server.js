@@ -8,10 +8,10 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Origin", "https://pzhukovski.github.io/Mts-tariff");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
-
 app.get("/Mts-tariff/api", async (req, res) => {
   console.log("поехали");
 
@@ -54,6 +54,8 @@ app.get("/Mts-tariff/api", async (req, res) => {
     console.error("Ошибка при выполнении скрипта:", error);
     res.status(500).json({ error: "Ошибка при чтении данных" });
   }
+
 });
 
+console.log(`Listening on port: ${port} `)
 export default app;

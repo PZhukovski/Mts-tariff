@@ -12,9 +12,10 @@ function App() {
     category: 5194439,
   });
   const [selectedSelector, setSelectedSelector] = useState("popular");
-
+//http://localhost:3001/Mts-tariff/api
+//https://pzhukovski.github.io/Mts-tariff/api
   const callBackendAPI = async () => {
-    const response = await fetch("https://pzhukovski.github.io/Mts-tariff/api");
+    const response = await fetch("/Mts-tariff/api");
     setData(dataJson);
     if (response.status !== 200) {
       throw Error(response.message);

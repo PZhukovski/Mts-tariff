@@ -7,5 +7,5 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     },
-    base: "/Mts-tariff",
+    base: "/Mts-tariff/",
 });
