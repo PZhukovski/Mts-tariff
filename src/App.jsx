@@ -4,6 +4,8 @@ import dataJson from "../data.json";
 import { TariffList } from "./components/TariffList/TariffList";
 import { TariffCategory } from "./components/TariffCategory/TariffCategory";
 import { Select } from "./components/Select/Select";
+import { fetchData } from "./helpers/fetchData";
+
 export const DataContext = createContext();
 
 function App() {
@@ -14,11 +16,19 @@ function App() {
   const [selectedSelector, setSelectedSelector] = useState("popular");
 //http://localhost:3001/Mts-tariff/api
 //https://pzhukovski.github.io/Mts-tariff/api
+  // const callBackendAPI = async () => {
+  //   const response = await fetch("/Mts-tariff/api");
+  //   setData(dataJson);
+  //   if (response.status !== 200) {
+  //     throw Error(response.message);
+  //   }
+  // };
   const callBackendAPI = async () => {
-    const response = await fetch("/Mts-tariff/api");
-    setData(dataJson);
-    if (response.status !== 200) {
-      throw Error(response.message);
+    try {
+      const data = await fetchData(); 
+      setData(data);
+    } catch (error) {
+      console.error("Ошибка при выполнении запроса:", error);
     }
   };
   const onChangeCategory = (id) => () => {
