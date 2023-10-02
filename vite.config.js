@@ -1,11 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
+import { externalizeDeps } from 'vite-plugin-externalize-deps'
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(),
+    nodePolyfills(), externalizeDeps()],
   build: {
-    outDir: 'dist',
-    },
-    base: "/Mts-tariff/",
-});
+    outDir: 'dist'
+  },
+  base: "/Mts-tariff",
+  });

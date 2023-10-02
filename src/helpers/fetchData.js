@@ -1,6 +1,8 @@
-import puppeteer from "puppeteer-core";
 import { writeFileSync } from "fs";
 import chromium from "@sparticuz/chromium";
+import puppeteer from "puppeteer-core";
+import * as fs from 'node:fs';
+
 
 export async function fetchData() {
   let options = {
@@ -32,7 +34,7 @@ export async function fetchData() {
 
     const jsonData = JSON.stringify(data, null, 2);
     try {
-      writeFileSync("data.json", jsonData, "utf8");
+      fs.writeFileSync("data.json", jsonData, "utf8");
       console.log("Данные успешно записаны в файл data.json");
     } catch (error) {
       console.error("Ошибка при записи данных в файл:", error);

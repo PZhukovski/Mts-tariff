@@ -25,7 +25,8 @@ function App() {
   // };
   const callBackendAPI = async () => {
     try {
-      const data = await fetchData(); 
+      console.log('hello')
+      const data = await fetchData();
       setData(data);
     } catch (error) {
       console.error("Ошибка при выполнении запроса:", error);
