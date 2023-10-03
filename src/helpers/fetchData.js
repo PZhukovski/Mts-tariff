@@ -1,4 +1,3 @@
-import { writeFileSync } from "fs";
 import chromium from "@sparticuz/chromium";
 import puppeteer from "puppeteer-core";
 import * as fs from 'node:fs';
